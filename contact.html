@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - HealthCare Plus</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="images/Logo.png" alt="HealthCare Plus Logo">
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="enrollment.html">Enrollment</a></li>
+                    <li><a href="claims.html">Claims</a></li>
+                    <li><a href="benefits.html">Benefits</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="nav-buttons">
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn-link">Login</a>
+                    <a href="register.html" class="btn primary">Register</a>
+                </div>
+                <div class="user-profile">
+                    <button class="profile-toggle">
+                        <img src="images/default-avatar.png" alt="User Avatar" id="userAvatar">
+                        <span id="userName">John Doe</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="profile-dropdown">
+                        <a href="dashboard.html" class="profile-dropdown-item">
+                            <i class="fas fa-columns"></i>
+                            Dashboard
+                        </a>
+                        <a href="claims-status.html" class="profile-dropdown-item">
+                            <i class="fas fa-file-medical"></i>
+                            Claims Status
+                        </a>
+                        <a href="profile.html" class="profile-dropdown-item">
+                            <i class="fas fa-user"></i>
+                            My Profile
+                        </a>
+                        <hr>
+                        <a href="#" class="profile-dropdown-item logout-btn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+                <button class="dark-mode-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="search-container">
+                <button class="search-toggle">
+                    <i class="fas fa-search"></i>
+                </button>
+                <div class="search-overlay">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search for services, information...">
+                        <div class="search-results">
+                            <!-- Results will be populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+                <h1 class="page-title"><i class="fas fa-headset"></i> Contact Us</h1>
+                <p class="section-description">We're here to help you with any questions or concerns about your healthcare coverage.</p>
+
+                <!-- Contact Hero Banner -->
+                <div class="contact-hero">
+                    <div class="contact-hero-content">
+                        <h2>Get in Touch With Our Support Team</h2>
+                        <p>Our dedicated customer service representatives are available to assist you with enrollment questions, claims processing, benefits information, and any other inquiries about your healthcare coverage.</p>
+                    </div>
+                </div>
+
+            <div class="contact-grid">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                        <div class="section-title">
+                            <i class="fas fa-info-circle"></i>
+                            <h2>How to Reach Us</h2>
+                        </div>
+                        
+                        <div class="info-cards">
+                    <div class="info-card">
+                                <div class="info-icon">
+                        <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="info-content">
+                        <h3>Call Us</h3>
+                                    <p class="contact-primary">+256-7718-30-421</p>
+                                    <div class="contact-details">
+                                        <p><i class="fas fa-clock"></i> Monday - Friday: 8am - 8pm</p>
+                                        <p><i class="fas fa-clock"></i> Saturday: 9am - 5pm</p>
+                                        <p><i class="fas fa-clock"></i> Sunday: Closed</p>
+                                    </div>
+                                    <a href="tel:+2567718304021" class="btn contact-btn"><i class="fas fa-phone"></i> Call Now</a>
+                                </div>
+                    </div>
+                            
+                    <div class="info-card">
+                                <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="info-content">
+                        <h3>Email Us</h3>
+                                    <p class="contact-primary">info@healthcareplus.com</p>
+                                    <div class="contact-details">
+                                        <p><i class="fas fa-envelope"></i> General Inquiries: info@healthcareplus.com</p>
+                                        <p><i class="fas fa-envelope"></i> Customer Support: support@healthcareplus.com</p>
+                                        <p><i class="fas fa-envelope"></i> Claims Department: claims@healthcareplus.com</p>
+                                    </div>
+                                    <a href="mailto:info@healthcareplus.com" class="btn contact-btn"><i class="fas fa-envelope"></i> Email Now</a>
+                                </div>
+                    </div>
+                            
+                    <div class="info-card">
+                                <div class="info-icon">
+                        <i class="fas fa-location-dot"></i>
+                                </div>
+                                <div class="info-content">
+                        <h3>Visit Us</h3>
+                                    <p class="contact-primary">123 Healthcare Ave, Kampala</p>
+                                    <div class="contact-details">
+                                        <p><i class="fas fa-building"></i> Main Office: Makerere Hill, Kampala</p>
+                                        <p><i class="fas fa-building"></i> Branch Office: Entebbe Road, Kampala</p>
+                                        <p><i class="fas fa-building"></i> Regional Office: Jinja Road, Kampala</p>
+                                    </div>
+                                    <a href="https://maps.google.com" target="_blank" class="btn contact-btn"><i class="fas fa-map-marker-alt"></i> Get Directions</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="contact-form-container">
+                        <div class="section-title">
+                            <i class="fas fa-paper-plane"></i>
+                            <h2>Send Us a Message</h2>
+                </div>
+
+                <div class="contact-form">
+                    <form id="contactForm">
+                                <div class="form-row">
+                        <div class="form-group">
+                                        <label for="name"><i class="fas fa-user"></i> Full Name</label>
+                                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                                        <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+                                        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="phone"><i class="fas fa-phone"></i> Phone Number</label>
+                                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+                        </div>
+                        <div class="form-group">
+                                        <label for="subject"><i class="fas fa-tag"></i> Subject</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a subject...</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="enrollment">Enrollment Question</option>
+                                <option value="claims">Claims Support</option>
+                                <option value="benefits">Benefits Information</option>
+                                            <option value="billing">Billing Question</option>
+                                            <option value="complaint">File a Complaint</option>
+                            </select>
+                        </div>
+                                </div>
+                                
+                        <div class="form-group">
+                                    <label for="message"><i class="fas fa-comment"></i> Message</label>
+                                    <textarea id="message" name="message" rows="6" placeholder="How can we help you?" required></textarea>
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <input type="checkbox" id="newsletter" name="newsletter">
+                                    <label for="newsletter">Subscribe to our newsletter for health tips and updates</label>
+                                </div>
+                                
+                                <button type="submit" class="btn primary submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map Section -->
+                <div class="map-section">
+                    <div class="section-title">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <h2>Our Locations</h2>
+                    </div>
+                    <div class="map-container">
+                        <!-- Map Placeholder -->
+                        <div class="map-placeholder">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <p>Interactive map loading...</p>
+                            <small>Our main office is located at 123 Healthcare Ave, Makerere Hill, Kampala</small>
+                        </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                    <div class="section-title">
+                        <i class="fas fa-question-circle"></i>
+                <h2>Frequently Asked Questions</h2>
+                    </div>
+                    
+                    <div class="faq-grid">
+                        <div class="faq-item">
+                            <div class="faq-header">
+                                <h3><i class="fas fa-plus-circle"></i> How do I enroll in a health plan?</h3>
+                            </div>
+                            <div class="faq-content">
+                                <p>You can enroll through our online portal by visiting the Enrollment page, or contact our enrollment specialists at +256-7718-30-421 for personalized assistance. The enrollment process typically takes 15-20 minutes to complete.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-header">
+                                <h3><i class="fas fa-plus-circle"></i> How long does claim processing take?</h3>
+                            </div>
+                            <div class="faq-content">
+                                <p>Most claims are processed within 7-10 business days after submission. You can check the status of your claim anytime through our online portal or by contacting our claims department directly at claims@healthcareplus.com.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-header">
+                                <h3><i class="fas fa-plus-circle"></i> Can I change my plan during the year?</h3>
+                            </div>
+                            <div class="faq-content">
+                                <p>Yes, you can change your plan during the annual enrollment period which typically runs from November 1 to December 15. You may also qualify for a Special Enrollment Period if you experience certain life events like marriage, having a baby, or losing other health coverage.</p>
+                            </div>
+                        </div>
+                        
+                    <div class="faq-item">
+                            <div class="faq-header">
+                                <h3><i class="fas fa-plus-circle"></i> What documents do I need for enrollment?</h3>
+                            </div>
+                            <div class="faq-content">
+                                <p>You'll need identification (National ID or passport), proof of residence, and relevant medical history documents. For family coverage, you'll also need information for each family member, including their identification and any pre-existing medical conditions.</p>
+                            </div>
+                    </div>
+                        
+                    <div class="faq-item">
+                            <div class="faq-header">
+                                <h3><i class="fas fa-plus-circle"></i> How can I find a healthcare provider in my network?</h3>
+                            </div>
+                            <div class="faq-content">
+                                <p>You can find in-network providers through our online provider directory on our website. Simply log in to your account, navigate to the "Find a Provider" section, and search by location, specialty, or provider name. You can also call our customer service for assistance.</p>
+                            </div>
+                    </div>
+                        
+                    <div class="faq-item">
+                            <div class="faq-header">
+                                <h3><i class="fas fa-plus-circle"></i> What should I do if I have a medical emergency?</h3>
+                            </div>
+                            <div class="faq-content">
+                                <p>In case of a medical emergency, seek medical attention immediately. You or someone on your behalf should notify us within 48 hours of the emergency treatment. All emergency care is covered according to your plan benefits, regardless of whether the facility is in-network.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Chat CTA -->
+                <div class="chat-cta">
+                    <div class="cta-content">
+                        <div class="cta-icon">
+                            <i class="fas fa-comments"></i>
+            </div>
+                        <div class="cta-text">
+                            <h3>Need Immediate Assistance?</h3>
+                            <p>Our customer support team is available to chat with you right now.</p>
+        </div>
+                        <button class="btn chat-btn">Start Live Chat</button>
+            </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <style>
+        /* Contact Page Styles */
+        .contact-section {
+            padding: 50px 0;
+            background-color: #f8f9ff;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 2.5rem;
+            position: relative;
+        }
+
+        .page-title i {
+            color: #7860e0;
+            margin-right: 10px;
+        }
+
+        .section-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Contact Hero */
+        .contact-hero {
+            background-color: #7860e0;
+            color: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 50px;
+            background-image: linear-gradient(135deg, #7860e0 0%, #6049c7 100%);
+            box-shadow: 0 15px 30px rgba(120, 96, 224, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-hero::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .contact-hero::after {
+            content: "";
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .contact-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-hero h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .contact-hero p {
+            font-size: 1.05rem;
+            margin-bottom: 0;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Contact Grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .section-title i {
+            font-size: 2rem;
+            color: #7860e0;
+            margin-bottom: 10px;
+        }
+
+        .section-title h2 {
+            font-size: 1.8rem;
+            color: #333;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #7860e0;
+        }
+
+        /* Contact Info Cards */
+        .info-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .info-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 25px;
+            display: flex;
+            align-items: flex-start;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .info-icon {
+            background-color: #f0edff;
+            color: #7860e0;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .info-content {
+            flex-grow: 1;
+        }
+
+        .info-content h3 {
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .contact-primary {
+            font-size: 1.1rem;
+            color: #7860e0;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .contact-details {
+            margin-bottom: 15px;
+        }
+
+        .contact-details p {
+            margin: 5px 0;
+            color: #555;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-details p i {
+            color: #7860e0;
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #7860e0;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .contact-btn i {
+            margin-right: 5px;
+        }
+
+        .contact-btn:hover {
+            background-color: #6049c7;
+        }
+
+        /* Contact Form */
+        .contact-form-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+        }
+
+        .contact-form {
+            margin-top: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group label i {
+            color: #7860e0;
+            margin-right: 5px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: #333;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #7860e0;
+            box-shadow: 0 0 0 3px rgba(120, 96, 224, 0.1);
+            outline: none;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .checkbox-group input {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .checkbox-group label {
+            margin-bottom: 0;
+            font-weight: normal;
+            line-height: 1.4;
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+        }
+
+        .submit-btn i {
+            margin-right: 8px;
+        }
+
+        /* Map Section */
+        .map-section {
+            margin-bottom: 60px;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 400px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0edff;
+            color: #555;
+        }
+
+        .map-placeholder i {
+            font-size: 4rem;
+            color: #7860e0;
+            margin-bottom: 15px;
+        }
+
+        .map-placeholder p {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin-bottom: 60px;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .faq-item {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .faq-header {
+            padding: 20px;
+            background-color: #f8f9ff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-header:hover {
+            background-color: #f0edff;
+        }
+
+        .faq-header h3 {
+            margin: 0;
+            color: #333;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .faq-header h3 i {
+            color: #7860e0;
+            margin-right: 10px;
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-content {
+            padding: 0 20px 20px;
+        }
+
+        .faq-content p {
+            color: #555;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Live Chat CTA */
+        .chat-cta {
+            background-color: #7860e0;
+            border-radius: 15px;
+            padding: 30px;
+            color: white;
+            margin-bottom: 40px;
+            background-image: linear-gradient(135deg, #7860e0 0%, #6049c7 100%);
+            box-shadow: 0 15px 30px rgba(120, 96, 224, 0.2);
+        }
+
+        .cta-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .cta-icon {
+            font-size: 3rem;
+            margin-right: 20px;
+        }
+
+        .cta-text {
+            flex-grow: 1;
+        }
+
+        .cta-text h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-size: 1.5rem;
+        }
+
+        .cta-text p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        .chat-btn {
+            background-color: white;
+            color: #7860e0;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .chat-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                margin-bottom: 15px;
+            }
+
+            .cta-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cta-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .cta-text {
+                margin-bottom: 20px;
+            }
+
+            .contact-hero {
+                padding: 30px 20px;
+            }
+
+            .contact-hero h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ accordion functionality
+            const faqHeaders = document.querySelectorAll('.faq-header');
+            
+            faqHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('i');
+                    
+                    // Toggle icon
+                    if (icon.classList.contains('fa-plus-circle')) {
+                        icon.classList.remove('fa-plus-circle');
+                        icon.classList.add('fa-minus-circle');
+                    } else {
+                        icon.classList.remove('fa-minus-circle');
+                        icon.classList.add('fa-plus-circle');
+                    }
+                    
+                    // Toggle content visibility
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    }
+                });
+            });
+            
+            // Initialize with first FAQ item open
+            if (faqHeaders.length > 0) {
+                const firstContent = faqHeaders[0].nextElementSibling;
+                const firstIcon = faqHeaders[0].querySelector('i');
+                
+                firstIcon.classList.remove('fa-plus-circle');
+                firstIcon.classList.add('fa-minus-circle');
+                firstContent.style.maxHeight = firstContent.scrollHeight + 'px';
+            }
+            
+            // Chat button functionality
+            const chatBtn = document.querySelector('.chat-btn');
+            const chatWidget = document.querySelector('.chat-widget');
+            
+            if (chatBtn && chatWidget) {
+                chatBtn.addEventListener('click', function() {
+                    const chatToggle = chatWidget.querySelector('.chat-toggle');
+                    if (chatToggle) {
+                        chatToggle.click();
+                    }
+                });
+            }
+            
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Simulate form submission
+                    const submitBtn = this.querySelector('.submit-btn');
+                    const originalText = submitBtn.innerHTML;
+                    
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                    submitBtn.disabled = true;
+                    
+                    // Simulate API call
+                    setTimeout(() => {
+                        // Show success notification
+                        if (typeof showNotification === 'function') {
+                            showNotification('success', 'Your message has been sent successfully. We\'ll get back to you shortly!');
+                        } else {
+                            alert('Your message has been sent successfully. We\'ll get back to you shortly!');
+                        }
+                        
+                        // Reset form
+                        contactForm.reset();
+                        
+                        // Reset button
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    }, 1500);
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

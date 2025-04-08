@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enroll in Healthcare Plan - HealthCare Plus</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5468363493773000"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="images/Logo.png" alt="HealthCare Plus Logo">
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="enrollment.html">Enrollment</a></li>
+                    <li><a href="claims.html">Claims</a></li>
+                    <li><a href="benefits.html">Benefits</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="nav-buttons">
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn-link">Login</a>
+                    <a href="register.html" class="btn primary">Register</a>
+                </div>
+                <div class="user-profile">
+                    <button class="profile-toggle">
+                        <img src="images/default-avatar.png" alt="User Avatar" id="userAvatar">
+                        <span id="userName">John Doe</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="profile-dropdown">
+                        <a href="dashboard.html" class="profile-dropdown-item">
+                            <i class="fas fa-columns"></i>
+                            Dashboard
+                        </a>
+                        <a href="claims-status.html" class="profile-dropdown-item">
+                            <i class="fas fa-file-medical"></i>
+                            Claims Status
+                        </a>
+                        <a href="profile.html" class="profile-dropdown-item">
+                            <i class="fas fa-user"></i>
+                            My Profile
+                        </a>
+                        <hr>
+                        <a href="#" class="profile-dropdown-item logout-btn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+                <button class="dark-mode-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="search-container">
+                <button class="search-toggle">
+                    <i class="fas fa-search"></i>
+                </button>
+                <div class="search-overlay">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search for services, information...">
+                        <div class="search-results">
+                            <!-- Results will be populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="enrollment-section">
+            <div class="container">
+                <h1 class="page-title"><i class="fas fa-clipboard-list"></i> Healthcare Plan Enrollment</h1>
+                <p class="section-description">Complete your enrollment in a few simple steps to get the coverage that's right for you and your family.</p>
+                
+                <!-- Enrollment Hero -->
+                <div class="enrollment-hero">
+                    <div class="enrollment-hero-content">
+                        <h2>Your Path to Better Health Coverage</h2>
+                        <p>Enrolling with HealthCare Plus gives you access to quality healthcare services, comprehensive coverage options, and peace of mind for you and your loved ones.</p>
+                        <div class="enrollment-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Easy 4-step process</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Affordable plans starting at $199/month</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Coverage begins immediately upon approval</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Enrollment Progress -->
+                <div class="enrollment-progress">
+                    <div class="progress-step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Personal Information</div>
+                    </div>
+                    <div class="progress-step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Medical History</div>
+                    </div>
+                    <div class="progress-step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Plan Selection</div>
+                    </div>
+                    <div class="progress-step" data-step="4">
+                        <div class="step-number">4</div>
+                        <div class="step-label">Review & Payment</div>
+                    </div>
+                </div>
+
+                <!-- Enrollment Forms -->
+                <div class="enrollment-form">
+                    <!-- Step 1: Personal Information -->
+                    <div class="enrollment-step" id="step1">
+                        <h2><i class="fas fa-user-circle"></i> Personal Information</h2>
+                        <p class="step-description">Please provide your personal details to begin the enrollment process.</p>
+                        
+                        <form id="personalInfoForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="fullName"><i class="fas fa-user"></i> Full Name</label>
+                                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="phone"><i class="fas fa-phone"></i> Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="dob"><i class="fas fa-calendar-alt"></i> Date of Birth</label>
+                                    <input type="date" id="dob" name="dob" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="address"><i class="fas fa-home"></i> Address</label>
+                                <input type="text" id="address" name="address" placeholder="Enter your street address" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city"><i class="fas fa-city"></i> City</label>
+                                    <input type="text" id="city" name="city" placeholder="Enter your city" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="state"><i class="fas fa-map-marker-alt"></i> State/Province</label>
+                                    <input type="text" id="state" name="state" placeholder="Enter your state" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="zipCode"><i class="fas fa-mail-bulk"></i> Zip/Postal Code</label>
+                                    <input type="text" id="zipCode" name="zipCode" placeholder="Enter your zip code" required>
+                                </div>
+                            </div>
+                            
+                            <!-- Family members section -->
+                            <div class="family-members-section">
+                                <h3><i class="fas fa-users"></i> Family Members</h3>
+                                <p class="section-hint">Add family members to include in your healthcare plan.</p>
+                                
+                                <div class="family-members-list">
+                                    <!-- Family members will be added here dynamically -->
+                                </div>
+                                
+                                <button type="button" class="btn secondary add-member" onclick="addFamilyMember()">
+                                    <i class="fas fa-plus"></i> Add Family Member
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Step 2: Medical History -->
+                    <div class="enrollment-step hidden" id="step2">
+                        <h2><i class="fas fa-heartbeat"></i> Medical History</h2>
+                        <p class="step-description">Please provide information about your medical history to help us determine the best coverage for your needs.</p>
+                        
+                        <form id="medicalHistoryForm">
+                            <div class="medical-question">
+                                <label>Do you have any pre-existing medical conditions?</label>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="conditions-yes" name="hasConditions" value="yes">
+                                        <label for="conditions-yes">Yes</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="conditions-no" name="hasConditions" value="no">
+                                        <label for="conditions-no">No</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group conditions-details" style="display: none;">
+                                <label for="conditions"><i class="fas fa-notes-medical"></i> Please specify your conditions:</label>
+                                <textarea id="conditions" name="conditions" rows="4" placeholder="List any diagnosed conditions, including dates of diagnosis"></textarea>
+                                <p class="field-hint">Include any conditions diagnosed by a healthcare professional in the past 5 years.</p>
+                            </div>
+
+                            <div class="medical-question">
+                                <label>Are you currently taking any medications?</label>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="medications-yes" name="hasMedications" value="yes">
+                                        <label for="medications-yes">Yes</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="medications-no" name="hasMedications" value="no">
+                                        <label for="medications-no">No</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group medications-details" style="display: none;">
+                                <label for="medications"><i class="fas fa-prescription-bottle-alt"></i> Please list your current medications:</label>
+                                <textarea id="medications" name="medications" rows="4" placeholder="List medication names, dosages, and frequency"></textarea>
+                                <p class="field-hint">Include all prescription medications you are currently taking.</p>
+                            </div>
+                            
+                            <div class="medical-question">
+                                <label>Have you been hospitalized in the last 2 years?</label>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="hospitalized-yes" name="wasHospitalized" value="yes">
+                                        <label for="hospitalized-yes">Yes</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="hospitalized-no" name="wasHospitalized" value="no">
+                                        <label for="hospitalized-no">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group hospitalized-details" style="display: none;">
+                                <label for="hospitalization"><i class="fas fa-hospital"></i> Please provide details about your hospitalization:</label>
+                                <textarea id="hospitalization" name="hospitalization" rows="4" placeholder="Include dates, reason for hospitalization, and treatment received"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lastCheckup"><i class="fas fa-stethoscope"></i> Date of Last Medical Checkup:</label>
+                                <input type="date" id="lastCheckup" name="lastCheckup">
+                                <p class="field-hint">Enter the approximate date if you don't remember the exact date.</p>
+                            </div>
+                            
+                            <div class="medical-history-note">
+                                <i class="fas fa-info-circle"></i>
+                                <p>The information you provide here will be used solely for determining your coverage needs and will be kept confidential in accordance with our <a href="privacy.html">Privacy Policy</a>.</p>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Step 3: Plan Selection -->
+                    <div class="enrollment-step hidden" id="step3">
+                        <h2><i class="fas fa-clipboard-check"></i> Select Your Plan</h2>
+                        <p class="step-description">Choose the healthcare plan that best fits your needs and budget.</p>
+                        
+                        <form id="planSelectionForm">
+                            <div class="plans-comparison">
+                                <table class="plans-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Features</th>
+                                            <th>Basic Plan</th>
+                                            <th>Standard Plan</th>
+                                            <th>Premium Plan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Monthly Premium</td>
+                                            <td>$199</td>
+                                            <td>$299</td>
+                                            <td>$499</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Annual Deductible</td>
+                                            <td>$2,000</td>
+                                            <td>$1,000</td>
+                                            <td>$500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Primary Care Visit</td>
+                                            <td>$30 copay</td>
+                                            <td>$20 copay</td>
+                                            <td>$0 copay</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Specialist Visit</td>
+                                            <td>Not covered</td>
+                                            <td>$50 copay</td>
+                                            <td>$25 copay</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Emergency Care</td>
+                                            <td><i class="fas fa-check"></i></td>
+                                            <td><i class="fas fa-check"></i></td>
+                                            <td><i class="fas fa-check"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Prescription Coverage</td>
+                                            <td>Basic</td>
+                                            <td>Extended</td>
+                                            <td>Comprehensive</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Dental Coverage</td>
+                                            <td><i class="fas fa-times"></i></td>
+                                            <td>Basic</td>
+                                            <td>Full</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Vision Coverage</td>
+                                            <td><i class="fas fa-times"></i></td>
+                                            <td><i class="fas fa-times"></i></td>
+                                            <td><i class="fas fa-check"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mental Health</td>
+                                            <td><i class="fas fa-times"></i></td>
+                                            <td>Limited</td>
+                                            <td>Full</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="plans-grid">
+                                <div class="plan-option">
+                                    <input type="radio" id="basic-plan" name="selectedPlan" value="basic">
+                                    <label for="basic-plan" class="plan-card">
+                                        <div class="plan-header">
+                                            <h3>Basic Plan</h3>
+                                            <div class="price">$199<span>/month</span></div>
+                                        </div>
+                                        <div class="plan-features">
+                                            <ul>
+                                                <li><i class="fas fa-check"></i> Primary Care Visits</li>
+                                                <li><i class="fas fa-check"></i> Emergency Care</li>
+                                                <li><i class="fas fa-check"></i> Basic Prescriptions</li>
+                                                <li><i class="fas fa-check"></i> Preventive Care</li>
+                                                <li class="not-included"><i class="fas fa-times"></i> Specialist Visits</li>
+                                                <li class="not-included"><i class="fas fa-times"></i> Dental Coverage</li>
+                                            </ul>
+                                        </div>
+                                        <div class="plan-select">
+                                            <span class="select-text">Select Plan</span>
+                                        </div>
+                                    </label>
+                                </div>
+
+                                <div class="plan-option">
+                                    <input type="radio" id="standard-plan" name="selectedPlan" value="standard">
+                                    <label for="standard-plan" class="plan-card featured">
+                                        <div class="featured-tag">Most Popular</div>
+                                        <div class="plan-header">
+                                            <h3>Standard Plan</h3>
+                                            <div class="price">$299<span>/month</span></div>
+                                        </div>
+                                        <div class="plan-features">
+                                            <ul>
+                                                <li><i class="fas fa-check"></i> Primary Care Visits</li>
+                                                <li><i class="fas fa-check"></i> Emergency Care</li>
+                                                <li><i class="fas fa-check"></i> Extended Prescriptions</li>
+                                                <li><i class="fas fa-check"></i> Specialist Visits</li>
+                                                <li><i class="fas fa-check"></i> Basic Dental Coverage</li>
+                                                <li class="not-included"><i class="fas fa-times"></i> Vision Coverage</li>
+                                            </ul>
+                                        </div>
+                                        <div class="plan-select">
+                                            <span class="select-text">Select Plan</span>
+                                        </div>
+                                    </label>
+                                </div>
+
+                                <div class="plan-option">
+                                    <input type="radio" id="premium-plan" name="selectedPlan" value="premium">
+                                    <label for="premium-plan" class="plan-card">
+                                        <div class="plan-header">
+                                            <h3>Premium Plan</h3>
+                                            <div class="price">$499<span>/month</span></div>
+                                        </div>
+                                        <div class="plan-features">
+                                            <ul>
+                                                <li><i class="fas fa-check"></i> Primary Care Visits</li>
+                                                <li><i class="fas fa-check"></i> Emergency Care</li>
+                                                <li><i class="fas fa-check"></i> Full Prescription Coverage</li>
+                                                <li><i class="fas fa-check"></i> Unlimited Specialist Visits</li>
+                                                <li><i class="fas fa-check"></i> Full Dental & Vision</li>
+                                                <li><i class="fas fa-check"></i> Mental Health Coverage</li>
+                                            </ul>
+                                        </div>
+                                        <div class="plan-select">
+                                            <span class="select-text">Select Plan</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Step 4: Review & Payment -->
+                    <div class="enrollment-step hidden" id="step4">
+                        <h2><i class="fas fa-check-circle"></i> Review & Payment</h2>
+                        <p class="step-description">Please review your information and complete your payment details to finalize your enrollment.</p>
+                        
+                        <form id="paymentForm">
+                            <div class="review-section">
+                                <h3><i class="fas fa-list-alt"></i> Plan Summary</h3>
+                                <div class="summary-container">
+                                    <div class="summary-details">
+                                        <!-- Will be populated dynamically -->
+                                        <div class="summary-row">
+                                            <span class="summary-label">Selected Plan:</span>
+                                            <span class="summary-value" id="selectedPlanSummary">Standard Plan</span>
+                                        </div>
+                                        <div class="summary-row">
+                                            <span class="summary-label">Monthly Premium:</span>
+                                            <span class="summary-value" id="premiumSummary">$299.00</span>
+                                        </div>
+                                        <div class="summary-row">
+                                            <span class="summary-label">Coverage Start Date:</span>
+                                            <span class="summary-value" id="startDateSummary">August 1, 2024</span>
+                                        </div>
+                                        <div class="summary-row">
+                                            <span class="summary-label">Family Members:</span>
+                                            <span class="summary-value" id="familyMembersSummary">1</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="plan-features-summary">
+                                    <h4>Plan Features:</h4>
+                                    <ul id="planFeaturesList">
+                                        <li><i class="fas fa-check"></i> Primary Care Visits ($20 copay)</li>
+                                        <li><i class="fas fa-check"></i> Emergency Care</li>
+                                        <li><i class="fas fa-check"></i> Extended Prescription Coverage</li>
+                                        <li><i class="fas fa-check"></i> Specialist Visits ($50 copay)</li>
+                                        <li><i class="fas fa-check"></i> Basic Dental Coverage</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="payment-section">
+                                <h3><i class="fas fa-credit-card"></i> Payment Information</h3>
+                                <div class="payment-options">
+                                    <div class="payment-option">
+                                        <input type="radio" id="credit-card" name="paymentMethod" value="credit" checked>
+                                        <label for="credit-card">Credit Card</label>
+                                    </div>
+                                    <div class="payment-option">
+                                        <input type="radio" id="bank-transfer" name="paymentMethod" value="bank">
+                                        <label for="bank-transfer">Bank Transfer</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="payment-form" id="credit-card-form">
+                                    <div class="form-group">
+                                        <label for="cardName"><i class="fas fa-user"></i> Name on Card</label>
+                                        <input type="text" id="cardName" name="cardName" placeholder="Enter the name on your card" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cardNumber"><i class="fas fa-credit-card"></i> Card Number</label>
+                                        <input type="text" id="cardNumber" name="cardNumber" pattern="\d{16}" placeholder="1234 5678 9012 3456" required>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="expiryDate"><i class="fas fa-calendar-alt"></i> Expiry Date</label>
+                                            <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cvv"><i class="fas fa-lock"></i> CVV</label>
+                                            <input type="text" id="cvv" name="cvv" pattern="\d{3,4}" placeholder="123" required>
+                                            <span class="cvv-hint"><i class="fas fa-question-circle"></i> 3-4 digits on the back of your card</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="payment-form" id="bank-transfer-form" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="accountName"><i class="fas fa-user"></i> Account Holder Name</label>
+                                        <input type="text" id="accountName" name="accountName" placeholder="Enter the account holder name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="accountNumber"><i class="fas fa-university"></i> Account Number</label>
+                                        <input type="text" id="accountNumber" name="accountNumber" placeholder="Enter your account number">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="routingNumber"><i class="fas fa-route"></i> Routing Number</label>
+                                        <input type="text" id="routingNumber" name="routingNumber" placeholder="Enter your routing number">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="billing-details">
+                                <h3><i class="fas fa-file-invoice"></i> Billing Address</h3>
+                                <div class="form-group checkbox-group">
+                                    <input type="checkbox" id="sameAddress" name="sameAddress" checked>
+                                    <label for="sameAddress">Same as personal address</label>
+                                </div>
+                                
+                                <div class="billing-address-form" style="display: none;">
+                                    <!-- Billing address fields will appear here when checkbox is unchecked -->
+                                </div>
+                            </div>
+
+                            <div class="terms-section">
+                                <div class="form-group checkbox-group">
+                                    <input type="checkbox" id="termsAccept" name="termsAccept" required>
+                                    <label for="termsAccept">I agree to the <a href="terms.html" target="_blank">Terms and Conditions</a> and <a href="privacy.html" target="_blank">Privacy Policy</a></label>
+                                </div>
+                            </div>
+                            
+                            <div class="enrollment-complete-msg">
+                                <p><i class="fas fa-info-circle"></i> By clicking "Complete Enrollment", you agree to authorize a monthly payment of <span id="finalAmount">$299.00</span>.</p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="enrollment-nav">
+                    <button class="btn secondary prev-step"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button class="btn primary next-step">Next <i class="fas fa-arrow-right"></i></button>
+                </div>
+                
+                <!-- Enrollment Benefits -->
+                <div class="enrollment-benefits">
+                    <div class="section-title">
+                        <i class="fas fa-shield-alt"></i>
+                        <h2>Benefits of Enrolling Today</h2>
+                    </div>
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h3>Comprehensive Coverage</h3>
+                                <p>Get access to a wide network of healthcare providers, hospitals, and specialists to ensure you receive the care you need.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h3>Affordable Plans</h3>
+                                <p>Choose from a variety of plans designed to fit different budgets and healthcare needs, starting at just $199/month.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h3>Digital Access</h3>
+                                <p>Manage your healthcare on the go with our mobile app, including appointment scheduling and digital ID cards.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h3>Preventive Care</h3>
+                                <p>Stay healthy with covered preventive services like annual checkups, vaccinations, and health screenings.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Section -->
+                <div class="enrollment-faq">
+                    <div class="section-title">
+                        <i class="fas fa-question-circle"></i>
+                        <h2>Frequently Asked Questions</h2>
+                    </div>
+                    <div class="faq-accordion">
+                        <div class="faq-item">
+                            <div class="faq-header">
+                                <h3>When will my coverage begin?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-content">
+                                <p>Your coverage will begin on the first day of the month following the completion of your enrollment and payment. If you enroll before the 15th of the month, your coverage may begin on the first day of the following month.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-header">
+                                <h3>Can I include my dependents in my plan?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-content">
+                                <p>Yes, you can include your spouse, children, and other eligible dependents in your healthcare plan. Simply add them as family members during the personal information step of the enrollment process.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-header">
+                                <h3>Can I change my plan after enrollment?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-content">
+                                <p>You can change your plan during the annual open enrollment period or if you experience a qualifying life event such as marriage, birth of a child, or loss of other coverage. Contact our customer service for assistance with plan changes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Same as index.html) -->
+    <footer>
+        <!-- ... (same footer content as index.html) ... -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>
+                        <i class="fas fa-phone"></i> 1-800-HEALTH-PLUS<br>
+                        <i class="fas fa-envelope"></i> info@healthcareplus.com<br>
+                        <i class="fas fa-location-dot"></i> 123 Healthcare Ave, Makerere hill
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 HealthCare Plus. All rights reserved.</p>
+            </div>
+        </footer>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/dark-mode.js"></script>
+    <script src="js/hamburger.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/enrollment.js"></script>
+    <style>
+        /* Enrollment Page Styles */
+        .enrollment-section {
+            padding: 50px 0;
+            background-color: #f8f9ff;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 2.5rem;
+        }
+
+        .page-title i {
+            color: #7860e0;
+            margin-right: 10px;
+        }
+
+        .section-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Enrollment Hero */
+        .enrollment-hero {
+            background-color: #7860e0;
+            color: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 50px;
+            background-image: linear-gradient(135deg, #7860e0 0%, #6049c7 100%);
+            box-shadow: 0 15px 30px rgba(120, 96, 224, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .enrollment-hero::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .enrollment-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .enrollment-hero h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .enrollment-hero p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .enrollment-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px 15px;
+            border-radius: 30px;
+        }
+
+        .highlight-item i {
+            color: #4cd964;
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+
+        /* Progress Bar Styles */
+        .enrollment-progress {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            position: relative;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .enrollment-progress::before {
+            content: "";
+            position: absolute;
+            top: 25px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #e0e0e0;
+            z-index: 1;
+        }
+
+        .progress-step {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 25%;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: white;
+            border: 2px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: #555;
+            transition: all 0.3s ease;
+        }
+
+        .step-label {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .progress-step.active .step-number {
+            background-color: #7860e0;
+            border-color: #7860e0;
+            color: white;
+            box-shadow: 0 5px 15px rgba(120, 96, 224, 0.3);
+        }
+
+        .progress-step.completed .step-number {
+            background-color: #4cd964;
+            border-color: #4cd964;
+            color: white;
+        }
+
+        /* Enrollment Form */
+        .enrollment-form {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .enrollment-step h2 {
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        /* Navigation Buttons */
+        .enrollment-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 60px;
+        }
+
+        .enrollment-nav .btn {
+            padding: 12px 25px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .enrollment-nav .btn i {
+            margin: 0 8px;
+        }
+
+        /* Benefits Section */
+        .enrollment-benefits {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .section-title i {
+            font-size: 2rem;
+            color: #7860e0;
+            margin-bottom: 10px;
+        }
+
+        .section-title h2 {
+            font-size: 1.8rem;
+            color: #333;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #7860e0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .benefit-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: flex-start;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .benefit-icon {
+            background-color: #f0edff;
+            color: #7860e0;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .benefit-content h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 1.3rem;
+        }
+
+        .benefit-content p {
+            color: #555;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* FAQ Section */
+        .enrollment-faq {
+            margin-bottom: 40px;
+        }
+
+        .faq-accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .faq-header {
+            padding: 20px 25px;
+            background-color: #f8f9ff;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-header:hover {
+            background-color: #f0edff;
+        }
+
+        .faq-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .faq-header i {
+            color: #7860e0;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-content {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-content p {
+            margin: 0;
+            padding: 20px 0;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-header {
+            background-color: #f0edff;
+        }
+
+        .faq-item.active .faq-header i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-content {
+            max-height: 1000px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .enrollment-highlights {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .progress-step .step-label {
+                font-size: 0.8rem;
+            }
+            
+            .enrollment-hero {
+                padding: 30px 20px;
+            }
+            
+            .enrollment-hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .benefit-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .benefit-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+
+        .step-description {
+            color: #555;
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        /* Form Styles */
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group label i {
+            color: #7860e0;
+            margin-right: 5px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: #333;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #7860e0;
+            box-shadow: 0 0 0 3px rgba(120, 96, 224, 0.1);
+            outline: none;
+        }
+
+        .field-hint {
+            font-size: 0.85rem;
+            color: #777;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        /* Family Members Section */
+        .family-members-section {
+            background-color: #f8f9ff;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+            border: 1px dashed #7860e0;
+        }
+
+        .family-members-section h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #333;
+            display: flex;
+            align-items: center;
+        }
+
+        .family-members-section h3 i {
+            color: #7860e0;
+            margin-right: 10px;
+        }
+
+        .section-hint {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .add-member {
+            margin-top: 15px;
+        }
+
+        /* Medical History Styles */
+        .medical-question {
+            background-color: #f8f9ff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .medical-question label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #333;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+        }
+
+        .radio-option input[type="radio"] {
+            margin-right: 8px;
+            width: auto;
+        }
+
+        .radio-option label {
+            margin-bottom: 0;
+            font-weight: normal;
+        }
+
+        .medical-history-note {
+            display: flex;
+            align-items: flex-start;
+            background-color: #f0edff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .medical-history-note i {
+            color: #7860e0;
+            font-size: 1.2rem;
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+
+        .medical-history-note p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .medical-history-note a {
+            color: #7860e0;
+            text-decoration: underline;
+        }
+
+        /* Plan Selection Styles */
+        .plans-comparison {
+            margin-bottom: 40px;
+            overflow-x: auto;
+        }
+
+        .plans-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        .plans-table th, .plans-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .plans-table th {
+            background-color: #7860e0;
+            color: white;
+            font-weight: 600;
+        }
+
+        .plans-table th:first-child {
+            text-align: left;
+            background-color: #6049c7;
+        }
+
+        .plans-table td:first-child {
+            text-align: left;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .plans-table tr:nth-child(even) {
+            background-color: #f8f9ff;
+        }
+
+        .plans-table .fas.fa-check {
+            color: #4cd964;
+        }
+
+        .plans-table .fas.fa-times {
+            color: #ff3b30;
+        }
+
+        .plan-card {
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 60px;
+        }
+
+        .plan-header {
+            background-color: #f8f9ff;
+            padding: 25px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        .plan-header h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.5rem;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #7860e0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            font-weight: normal;
+            color: #777;
+        }
+
+        .plan-features {
+            padding: 20px 25px;
+        }
+
+        .plan-select {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #f0edff;
+            color: #7860e0;
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .plan-option input[type="radio"]:checked + .plan-card .plan-select {
+            background-color: #7860e0;
+            color: white;
+        }
+
+        /* Review & Payment Styles */
+        .summary-container {
+            background-color: #f8f9ff;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+
+        .summary-label {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .summary-value {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .plan-features-summary {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .plan-features-summary h4 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .plan-features-summary ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .plan-features-summary li {
+            padding: 8px 0;
+            color: #555;
+        }
+
+        .plan-features-summary .fas.fa-check {
+            color: #4cd964;
+            margin-right: 10px;
+        }
+
+        .payment-options {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+        }
+
+        .payment-option input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        .cvv-hint {
+            display: block;
+            font-size: 0.85rem;
+            color: #777;
+            margin-top: 5px;
+        }
+
+        .billing-details, .payment-section {
+            margin-top: 40px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 10px;
+            width: auto;
+        }
+
+        .checkbox-group label {
+            margin-bottom: 0;
+            font-weight: normal;
+        }
+
+        .enrollment-complete-msg {
+            background-color: #f0edff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .enrollment-complete-msg p {
+            margin: 0;
+            color: #333;
+            font-size: 0.95rem;
+        }
+
+        .enrollment-complete-msg i {
+            color: #7860e0;
+            margin-right: 5px;
+        }
+
+        #finalAmount {
+            font-weight: 700;
+            color: #7860e0;
+        }
+    </style>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const header = item.querySelector('.faq-header');
+            
+            header.addEventListener('click', () => {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Open first FAQ item by default
+        if (faqItems.length > 0) {
+            faqItems[0].classList.add('active');
+        }
+        
+        // Medical history form conditionals
+        const conditionsRadios = document.querySelectorAll('input[name="hasConditions"]');
+        const medicationsRadios = document.querySelectorAll('input[name="hasMedications"]');
+        const hospitalizedRadios = document.querySelectorAll('input[name="wasHospitalized"]');
+        
+        conditionsRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                const detailsDiv = document.querySelector('.conditions-details');
+                if (this.value === 'yes') {
+                    detailsDiv.style.display = 'block';
+                } else {
+                    detailsDiv.style.display = 'none';
+                }
+            });
+        });
+        
+        medicationsRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                const detailsDiv = document.querySelector('.medications-details');
+                if (this.value === 'yes') {
+                    detailsDiv.style.display = 'block';
+                } else {
+                    detailsDiv.style.display = 'none';
+                }
+            });
+        });
+        
+        hospitalizedRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                const detailsDiv = document.querySelector('.hospitalized-details');
+                if (this.value === 'yes') {
+                    detailsDiv.style.display = 'block';
+                } else {
+                    detailsDiv.style.display = 'none';
+                }
+            });
+        });
+        
+        // Payment method toggle
+        const paymentMethodRadios = document.querySelectorAll('input[name="paymentMethod"]');
+        
+        paymentMethodRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                const creditCardForm = document.getElementById('credit-card-form');
+                const bankTransferForm = document.getElementById('bank-transfer-form');
+                
+                if (this.value === 'credit') {
+                    creditCardForm.style.display = 'block';
+                    bankTransferForm.style.display = 'none';
+                } else {
+                    creditCardForm.style.display = 'none';
+                    bankTransferForm.style.display = 'block';
+                }
+            });
+        });
+        
+        // Billing address toggle
+        const sameAddressCheckbox = document.getElementById('sameAddress');
+        
+        sameAddressCheckbox.addEventListener('change', function() {
+            const billingAddressForm = document.querySelector('.billing-address-form');
+            
+            if (this.checked) {
+                billingAddressForm.style.display = 'none';
+            } else {
+                billingAddressForm.style.display = 'block';
+            }
+        });
+    });
+    </script>
+</body>
+</html> 

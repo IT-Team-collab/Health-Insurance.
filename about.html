@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - HealthCare Plus</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="images/Logo.png" alt="HealthCare Plus Logo">
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="enrollment.html">Enrollment</a></li>
+                <li><a href="claims.html">Claims</a></li>
+                <li><a href="benefits.html">Benefits</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="nav-buttons">
+            <div class="auth-buttons">
+                <a href="login.html" class="btn-link">Login</a>
+                <a href="register.html" class="btn primary">Register</a>
+            </div>
+            <div class="user-profile">
+                <button class="profile-toggle">
+                    <img src="images/default-avatar.png" alt="User Avatar" id="userAvatar">
+                    <span id="userName">John Doe</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="profile-dropdown">
+                    <a href="dashboard.html" class="profile-dropdown-item">
+                        <i class="fas fa-columns"></i>
+                        Dashboard
+                    </a>
+                    <a href="claims-status.html" class="profile-dropdown-item">
+                        <i class="fas fa-file-medical"></i>
+                        Claims Status
+                    </a>
+                    <a href="profile.html" class="profile-dropdown-item">
+                        <i class="fas fa-user"></i>
+                        My Profile
+                    </a>
+                    <hr>
+                    <a href="#" class="profile-dropdown-item logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </a>
+                </div>
+            </div>
+            <button class="dark-mode-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="search-container">
+            <button class="search-toggle">
+                <i class="fas fa-search"></i>
+            </button>
+            <div class="search-overlay">
+                <div class="search-box">
+                    <input type="text" placeholder="Search for services, information...">
+                    <div class="search-results">
+                        <!-- Results will be populated dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    </header>
+
+    <main>
+        <section class="about-section">
+            <div class="container">
+                <h1 class="page-title"><i class="fas fa-building"></i> About HealthCare Plus</h1>
+                
+                <!-- Hero Banner -->
+                <div class="about-hero">
+                    <div class="about-hero-content">
+                        <h2>Your Health Is Our Priority</h2>
+                        <p>HealthCare Plus was founded on the belief that quality healthcare should be accessible to everyone. For over two decades, we've been committed to providing exceptional health insurance solutions that put people first.</p>
+                        <a href="contact.html" class="btn primary">Get in Touch</a>
+                    </div>
+                </div>
+
+                <!-- Mission & Vision Section -->
+                <div class="mission-vision-container">
+                    <div class="mission-vision-box">
+                        <div class="mission">
+                            <div class="icon-circle">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <h2>Our Mission</h2>
+                            <p>To provide accessible, affordable, and comprehensive healthcare coverage that empowers individuals and families to live healthier lives. We strive to remove barriers to quality healthcare and create a healthier society for all.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mission-vision-box">
+                        <div class="vision">
+                            <div class="icon-circle">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <h2>Our Vision</h2>
+                            <p>To be the leading healthcare insurance provider in East Africa, known for excellence in customer service, innovative digital health solutions, and unwavering commitment to community well-being and preventive care initiatives.</p>
+                        </div>
+                        </div>
+                    </div>
+
+                <!-- Our Values Section -->
+                <div class="section-title">
+                    <i class="fas fa-gem"></i>
+                    <h2>Our Core Values</h2>
+                </div>
+                        <div class="values-grid">
+                            <div class="value-card">
+                        <div class="value-icon">
+                                <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="value-content">
+                                <h3>Care</h3>
+                            <p>We put our members' health and well-being first in everything we do, ensuring that each interaction is guided by compassion and understanding.</p>
+                        </div>
+                            </div>
+                            <div class="value-card">
+                        <div class="value-icon">
+                                <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="value-content">
+                                <h3>Integrity</h3>
+                            <p>We operate with honesty, transparency, and ethical behavior, maintaining the highest standards in all our business practices and relationships.</p>
+                        </div>
+                            </div>
+                            <div class="value-card">
+                        <div class="value-icon">
+                                <i class="fas fa-star"></i>
+                        </div>
+                        <div class="value-content">
+                                <h3>Excellence</h3>
+                            <p>We strive for the highest standards in service and care, continuously improving our processes to deliver exceptional experiences for our members.</p>
+                        </div>
+                            </div>
+                            <div class="value-card">
+                        <div class="value-icon">
+                                <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <div class="value-content">
+                                <h3>Community</h3>
+                            <p>We're committed to making a positive impact in our communities through outreach programs, health education, and support for local initiatives.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Our Approach Section -->
+                <div class="section-title">
+                    <i class="fas fa-chart-line"></i>
+                    <h2>Our Approach</h2>
+                </div>
+                <div class="approach-container">
+                    <div class="approach-item">
+                        <div class="approach-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="approach-content">
+                            <h3>Member-Centered Care</h3>
+                            <p>We design our plans and services around our members' needs, ensuring that healthcare decisions remain in their hands with our support and guidance.</p>
+                        </div>
+                    </div>
+                    <div class="approach-item">
+                        <div class="approach-icon">
+                            <i class="fas fa-hand-holding-medical"></i>
+                        </div>
+                        <div class="approach-content">
+                            <h3>Preventive Focus</h3>
+                            <p>We emphasize preventive care and wellness programs that help our members stay healthy and avoid costly medical interventions down the road.</p>
+                        </div>
+                    </div>
+                    <div class="approach-item">
+                        <div class="approach-icon">
+                            <i class="fas fa-laptop-medical"></i>
+                        </div>
+                        <div class="approach-content">
+                            <h3>Digital Innovation</h3>
+                            <p>We leverage technology to simplify healthcare access, from online enrollment to telehealth services and digital claim processing.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Our History Section -->
+                <div class="section-title">
+                    <i class="fas fa-history"></i>
+                    <h2>Our Journey</h2>
+                </div>
+                <div class="timeline-container">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-date">
+                                    <i class="fas fa-calendar-alt"></i> 2000
+                                </div>
+                                <h3>Our Beginning</h3>
+                                <p>Founded with a vision to make healthcare accessible to all Ugandans, starting with our first office in Kampala with just 10 employees.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-date">
+                                    <i class="fas fa-calendar-alt"></i> 2005
+                                </div>
+                                <h3>Family First</h3>
+                                <p>Expanded services to include comprehensive family coverage plans and launched our first dedicated pediatric healthcare network.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-date">
+                                    <i class="fas fa-calendar-alt"></i> 2010
+                                </div>
+                                <h3>Digital Transformation</h3>
+                                <p>Introduced innovative digital health solutions including our first mobile app and online claims portal to simplify member experience.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-date">
+                                    <i class="fas fa-calendar-alt"></i> 2015
+                                </div>
+                                <h3>Regional Expansion</h3>
+                                <p>Expanded operations to neighboring countries in East Africa, bringing our healthcare solutions to more people in need.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-date">
+                                    <i class="fas fa-calendar-alt"></i> 2020
+                                </div>
+                                <h3>Milestone Achievement</h3>
+                                <p>Reached the significant milestone of serving over 1 million members across East Africa and launched our telehealth service.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-date">
+                                    <i class="fas fa-calendar-alt"></i> 2025
+                                </div>
+                                <h3>Looking Forward</h3>
+                                <p>Continuing to innovate with AI-driven health insights and expanding our preventative care initiatives throughout the region.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leadership Team Section -->
+                <div class="section-title">
+                    <i class="fas fa-users"></i>
+                    <h2>Our Leadership Team</h2>
+                </div>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-image">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="member-info">
+                            <h3>Dr. Andrew Anik</h3>
+                            <p class="member-title">Chief Executive Officer</p>
+                            <p class="member-bio">With over 20 years of experience in healthcare management, Dr. Andrew leads our organization with vision and compassion.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="member-image">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="member-info">
+                            <h3>Dr.Cristopher K</h3>
+                            <p class="member-title">Chief Medical Officer</p>
+                            <p class="member-bio">A respected physician with extensive clinical experience, Dr. Christopher ensures our policies prioritize quality care.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="member-image">
+                            <i class="fas fa-user-cog"></i>
+                        </div>
+                        <div class="member-info">
+                            <h3>Faisal Bulega</h3>
+                            <p class="member-title">Chief Technology Officer</p>
+                            <p class="member-bio">Faisal leads our digital transformation initiatives, bringing innovative solutions to healthcare delivery.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="member-image">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="member-info">
+                            <h3>Haluah Nabwami</h3>
+                            <p class="member-title">Chief Financial Officer</p>
+                            <p class="member-bio">With her financial expertise, Haluah ensures we maintain sustainable operations while keeping care affordable.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Community Impact Section -->
+                <div class="section-title">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h2>Community Impact</h2>
+                </div>
+                <div class="impact-container">
+                    <div class="impact-content">
+                        <p>At HealthCare Plus, we believe in giving back to the communities we serve. Through our HealthCare Plus Foundation, we've implemented numerous programs that promote health education, preventive care, and medical support for underserved populations.</p>
+                        
+                        <div class="impact-stats">
+                            <div class="stat-box">
+                                <i class="fas fa-hospital"></i>
+                                <div class="stat-number">25+</div>
+                                <div class="stat-label">Community Clinics Supported</div>
+                            </div>
+                            <div class="stat-box">
+                                <i class="fas fa-user-md"></i>
+                                <div class="stat-number">10,000+</div>
+                                <div class="stat-label">Free Health Screenings</div>
+                            </div>
+                            <div class="stat-box">
+                                <i class="fas fa-graduation-cap"></i>
+                                <div class="stat-number">500+</div>
+                                <div class="stat-label">Healthcare Scholarships</div>
+                            </div>
+                            <div class="stat-box">
+                                <i class="fas fa-hand-holding-medical"></i>
+                                <div class="stat-number">$5M+</div>
+                                <div class="stat-label">Community Investment</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Awards & Recognition Section -->
+                <div class="section-title">
+                    <i class="fas fa-trophy"></i>
+                    <h2>Awards & Recognition</h2>
+                </div>
+                <div class="awards-container">
+                    <div class="award-item">
+                        <div class="award-icon">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <div class="award-content">
+                            <h3>Excellence in Healthcare Insurance</h3>
+                            <p class="award-org">East Africa Insurance Awards 2022</p>
+                            <p>Recognized for our innovative approach to healthcare coverage and exceptional customer service.</p>
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="award-content">
+                            <h3>Best Digital Healthcare Solution</h3>
+                            <p class="award-org">African Digital Innovation Awards 2021</p>
+                            <p>Our mobile app and online portal were recognized for transforming healthcare accessibility.</p>
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="award-content">
+                            <h3>Community Impact Award</h3>
+                            <p class="award-org">Corporate Social Responsibility Forum 2020</p>
+                            <p>Honored for our commitment to improving healthcare outcomes in underserved communities.</p>
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-icon">
+                            <i class="fas fa-thumbs-up"></i>
+                        </div>
+                        <div class="award-content">
+                            <h3>Customer Satisfaction Champion</h3>
+                            <p class="award-org">National Customer Service Awards 2019</p>
+                            <p>Awarded for maintaining the highest standards of customer satisfaction in the insurance sector.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonials Section -->
+                <div class="section-title">
+                    <i class="fas fa-quote-left"></i>
+                    <h2>What Our Members Say</h2>
+                </div>
+                <div class="testimonials-container">
+                    <div class="testimonial-card">
+                        <div class="testimonial-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <p class="testimonial-text">HealthCare Plus has been a lifesaver for my family. When my daughter needed emergency surgery, they approved the claim quickly and supported us throughout the process.</p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>Zozimus Desire</h4>
+                                <p>Family Plan Member | 4 years</p>
+                            </div>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <p class="testimonial-text">As a small business owner, I appreciate how easy HealthCare Plus makes it to provide coverage for my employees. Their plans are affordable and the digital tools save us time.</p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>Nalubega Rebecca</h4>
+                                <p>Business Plan Member | 3 years</p>
+                            </div>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <p class="testimonial-text">The preventive care benefits have been excellent. I've been able to manage my chronic condition with regular checkups and screenings that are fully covered by my plan.</p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>Kaganzi Winfred</h4>
+                                <p>Premium Plan Member | 5 years</p>
+                            </div>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Partners Section -->
+                <div class="section-title">
+                    <i class="fas fa-handshake"></i>
+                    <h2>Our Trusted Partners</h2>
+                </div>
+                <div class="partners-container">
+                    <div class="partner-row">
+                        <div class="partner-item">
+                            <div class="partner-icon">
+                                <i class="fas fa-hospital"></i>
+                            </div>
+                            <h3>National Referral Hospital Mulago</h3>
+                            <p>Premier healthcare facility providing advanced medical services and specialized treatments.</p>
+                        </div>
+                        <div class="partner-item">
+                            <div class="partner-icon">
+                                <i class="fas fa-clinic-medical"></i>
+                            </div>
+                            <h3>City Medical Centers</h3>
+                            <p>Network of urban clinics offering convenient access to quality healthcare services.</p>
+                        </div>
+                        <div class="partner-item">
+                            <div class="partner-icon">
+                                <i class="fas fa-pills"></i>
+                            </div>
+                            <h3>East Africa Pharmaceuticals</h3>
+                            <p>Leading provider of medications and pharmaceutical products across the region.</p>
+                        </div>
+                    </div>
+                    <div class="partner-row">
+                        <div class="partner-item">
+                            <div class="partner-icon">
+                                <i class="fas fa-stethoscope"></i>
+                            </div>
+                            <h3>Specialist Physicians Network</h3>
+                            <p>Consortium of specialized doctors providing expert care across medical disciplines.</p>
+                        </div>
+                        <div class="partner-item">
+                            <div class="partner-icon">
+                                <i class="fas fa-tooth"></i>
+                            </div>
+                            <h3>Dental Care Associates</h3>
+                            <p>Comprehensive dental care provider with locations throughout East Africa.</p>
+                        </div>
+                        <div class="partner-item">
+                            <div class="partner-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <h3>Vision Care Centers</h3>
+                            <p>Leaders in eye care services offering examinations, treatments, and optical solutions.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="section-title">
+                    <i class="fas fa-question-circle"></i>
+                    <h2>Frequently Asked Questions</h2>
+                </div>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-plus-circle"></i>
+                            <h3>What makes HealthCare Plus different from other insurers?</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>HealthCare Plus stands out through our member-centered approach, digital innovation, extensive healthcare provider network, and commitment to preventive care. We focus on making healthcare accessible and affordable while providing exceptional customer service.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-plus-circle"></i>
+                            <h3>How quickly can I expect claims to be processed?</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Most claims are processed within 7-10 business days. With our digital claims system, you can track the status of your claim in real-time through our mobile app or online portal, making the process transparent and stress-free.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-plus-circle"></i>
+                            <h3>Does HealthCare Plus cover pre-existing conditions?</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we cover pre-existing conditions after a waiting period of 12 months for most conditions. Some plans offer shorter waiting periods, and we provide specialized programs to help manage chronic conditions during this time.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-plus-circle"></i>
+                            <h3>Can I add family members to my plan after enrollment?</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Absolutely! You can add dependents to your plan at any time. New additions such as newborns can be added within 30 days of birth without waiting periods. For other family members, standard enrollment guidelines apply.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-plus-circle"></i>
+                            <h3>What digital tools do you offer to members?</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our digital toolkit includes a user-friendly mobile app and web portal where you can view your benefits, find providers, submit and track claims, access telehealth services, store medical records securely, and communicate with our customer care team.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="about-cta">
+                    <div class="cta-content">
+                        <h2><i class="fas fa-heartbeat"></i> Join Our Healthcare Family</h2>
+                        <p>Experience the HealthCare Plus difference with comprehensive coverage that puts your health first.</p>
+                        <div class="cta-buttons">
+                            <a href="enrollment.html" class="btn primary">Enroll Today</a>
+                            <a href="contact.html" class="btn secondary">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <style>
+        /* About Page Styles */
+        .about-section {
+            padding: 50px 0;
+            background-color: #f8f9ff;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+            font-size: 2.5rem;
+            position: relative;
+        }
+
+        .page-title i {
+            color: #7860e0;
+            margin-right: 10px;
+        }
+
+        /* Hero Banner */
+        .about-hero {
+            background-color: #7860e0;
+            color: white;
+            border-radius: 15px;
+            padding: 60px;
+            margin-bottom: 60px;
+            background-image: linear-gradient(135deg, #7860e0 0%, #6049c7 100%);
+            box-shadow: 0 15px 30px rgba(120, 96, 224, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .about-hero::after {
+            content: "";
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .about-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+        }
+
+        .about-hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .about-hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .about-hero .btn {
+            padding: 12px 30px;
+            font-size: 1rem;
+            border-radius: 30px;
+            background-color: white;
+            color: #7860e0;
+            font-weight: 600;
+            border: none;
+        }
+
+        .about-hero .btn:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-3px);
+        }
+
+        /* Mission & Vision */
+        .mission-vision-container {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .mission-vision-box {
+            flex: 1;
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .mission-vision-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .icon-circle {
+            width: 80px;
+            height: 80px;
+            background-color: #f8f9ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: #7860e0;
+            font-size: 2rem;
+            box-shadow: 0 5px 15px rgba(120, 96, 224, 0.1);
+        }
+
+        .mission-vision-box h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .mission-vision-box h2:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: #7860e0;
+        }
+
+        .mission-vision-box p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .section-title i {
+            font-size: 2.5rem;
+            color: #7860e0;
+            margin-bottom: 15px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: #333;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #7860e0;
+        }
+
+        /* Values Grid */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .value-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .value-icon {
+            background-color: #7860e0;
+            color: white;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .value-content {
+            padding: 25px;
+        }
+
+        .value-content h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.5rem;
+        }
+
+        .value-content p {
+            color: #555;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Approach Section */
+        .approach-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .approach-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .approach-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .approach-icon {
+            background-color: #f8f9ff;
+            color: #7860e0;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .approach-content h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .approach-content p {
+            color: #555;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Timeline */
+        .timeline-container {
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50px;
+            width: 4px;
+            background-color: #7860e0;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 100px;
+            margin-bottom: 40px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 46px;
+            top: 15px;
+            width: 12px;
+            height: 12px;
+            background-color: #7860e0;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px rgba(120, 96, 224, 0.3);
+        }
+
+        .timeline-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            background-color: #7860e0;
+            color: white;
+            padding: 7px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .timeline-date i {
+            margin-right: 5px;
+        }
+
+        .timeline-content h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .timeline-content p {
+            color: #555;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .team-member {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .member-image {
+            height: 180px;
+            background-color: #7860e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+
+        .member-info {
+            padding: 25px;
+        }
+
+        .member-info h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .member-title {
+            color: #7860e0;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .member-bio {
+            color: #555;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Impact Section */
+        .impact-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 60px;
+        }
+
+        .impact-content p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .stat-box {
+            background-color: #f8f9ff;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-box i {
+            font-size: 2.5rem;
+            color: #7860e0;
+            margin-bottom: 15px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .about-cta {
+            background-color: #7860e0;
+            border-radius: 15px;
+            padding: 50px;
+            color: white;
+            text-align: center;
+            background-image: linear-gradient(135deg, #7860e0 0%, #6049c7 100%);
+            box-shadow: 0 15px 30px rgba(120, 96, 224, 0.2);
+        }
+
+        .about-cta h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .about-cta i {
+            margin-right: 10px;
+        }
+
+        .about-cta p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .cta-buttons .btn {
+            padding: 12px 30px;
+            font-size: 1rem;
+            border-radius: 30px;
+            font-weight: 600;
+            border: none;
+        }
+
+        .cta-buttons .primary {
+            background-color: white;
+            color: #7860e0;
+        }
+
+        .cta-buttons .secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-buttons .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Awards Section */
+        .awards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .award-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .award-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-left: 4px solid #7860e0;
+        }
+
+        .award-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #7860e0 0%, #6049c7 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .award-content h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            color: #333;
+            font-size: 1.2rem;
+        }
+
+        .award-org {
+            color: #7860e0;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .award-content p:last-child {
+            color: #555;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Testimonials Section */
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #f0f0f0;
+            font-size: 2.5rem;
+            opacity: 0.5;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 20px;
+        }
+
+        .author-image {
+            font-size: 2.5rem;
+            color: #7860e0;
+            margin-right: 15px;
+        }
+
+        .author-info h4 {
+            margin: 0;
+            color: #333;
+            font-size: 1.1rem;
+        }
+
+        .author-info p {
+            margin: 5px 0 0;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-rating {
+            margin-left: auto;
+            color: #ffc107;
+        }
+
+        /* Partners Section */
+        .partners-container {
+            margin-bottom: 60px;
+        }
+
+        .partner-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .partner-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .partner-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .partner-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #7860e0 0%, #6049c7 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .partner-item h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .partner-item p {
+            color: #555;
+            line-height: 1.6;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            margin-bottom: 60px;
+        }
+
+        .faq-item {
+            background-color: white;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #f8f9ff;
+        }
+
+        .faq-question i {
+            color: #7860e0;
+            margin-right: 15px;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active i {
+            transform: rotate(45deg);
+        }
+
+        .faq-question h3 {
+            margin: 0;
+            color: #333;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px 55px;
+            display: none;
+        }
+
+        .faq-answer p {
+            color: #555;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            background-color: #f8f9ff;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .about-hero {
+                padding: 40px 25px;
+            }
+
+            .about-hero h2 {
+                font-size: 2rem;
+            }
+
+            .mission-vision-container {
+                flex-direction: column;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                padding-left: 70px;
+            }
+
+            .timeline-dot {
+                left: 26px;
+            }
+
+            .impact-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+
+    <script src="js/main.js"></script>
+    <script src="js/dark-mode.js"></script>
+    <script src="js/hamburger.js"></script>
+    <script>
+        // FAQ Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const faqItem = question.parentElement;
+                    faqItem.classList.toggle('active');
+                    question.classList.toggle('active');
+                    
+                    // Update icon
+                    const icon = question.querySelector('i');
+                    if (faqItem.classList.contains('active')) {
+                        icon.classList.remove('fa-plus-circle');
+                        icon.classList.add('fa-minus-circle');
+                    } else {
+                        icon.classList.remove('fa-minus-circle');
+                        icon.classList.add('fa-plus-circle');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

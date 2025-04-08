@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claims - HealthCare Plus</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="images/Logo.png" alt="HealthCare Plus Logo">
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="enrollment.html">Enrollment</a></li>
+                    <li><a href="claims.html">Claims</a></li>
+                    <li><a href="benefits.html">Benefits</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="nav-buttons">
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn-link">Login</a>
+                    <a href="register.html" class="btn primary">Register</a>
+                </div>
+                <div class="user-profile">
+                    <button class="profile-toggle">
+                        <img src="images/default-avatar.png" alt="User Avatar" id="userAvatar">
+                        <span id="userName">John Doe</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="profile-dropdown">
+                        <a href="dashboard.html" class="profile-dropdown-item">
+                            <i class="fas fa-columns"></i>
+                            Dashboard
+                        </a>
+                        <a href="claims-status.html" class="profile-dropdown-item">
+                            <i class="fas fa-file-medical"></i>
+                            Claims Status
+                        </a>
+                        <a href="profile.html" class="profile-dropdown-item">
+                            <i class="fas fa-user"></i>
+                            My Profile
+                        </a>
+                        <hr>
+                        <a href="#" class="profile-dropdown-item logout-btn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+                <button class="dark-mode-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="search-container">
+                <button class="search-toggle">
+                    <i class="fas fa-search"></i>
+                </button>
+                <div class="search-overlay">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search for services, information...">
+                        <div class="search-results">
+                            <!-- Results will be populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Claims Section -->
+    <section class="claims-section">
+        <div class="container">
+            <h1>Insurance Claims</h1>
+            
+            <!-- Claims Tabs -->
+            <div class="claims-tabs">
+                <button class="tab-btn active" data-tab="submit">
+                    <i class="fas fa-file-medical"></i>
+                    Submit Claim
+                </button>
+                <button class="tab-btn" data-tab="track">
+                    <i class="fas fa-search"></i>
+                    Track Claims
+                </button>
+                <button class="tab-btn" data-tab="history">
+                    <i class="fas fa-history"></i>
+                    Claims History
+                </button>
+            </div>
+
+            <!-- Submit Claim Form -->
+            <div class="tab-content active" id="submit">
+                <div class="claims-form-container">
+                    <div class="form-progress">
+                        <div class="progress-step active">
+                            <div class="step-number">1</div>
+                            <div class="step-label">Claim Details</div>
+                        </div>
+                        <div class="progress-step">
+                            <div class="step-number">2</div>
+                            <div class="step-label">Documents</div>
+                        </div>
+                        <div class="progress-step">
+                            <div class="step-number">3</div>
+                            <div class="step-label">Review</div>
+                        </div>
+                    </div>
+
+                    <form id="claimsForm" class="claims-form">
+                        <div class="form-step active" data-step="1">
+                            <div class="form-group">
+                                <label for="claimType">
+                                    <i class="fas fa-tag"></i>
+                                    Type of Claim
+                                </label>
+                                <select id="claimType" name="claimType" required>
+                                    <option value="">Select claim type</option>
+                                    <option value="medical">Medical Visit</option>
+                                    <option value="prescription">Prescription</option>
+                                    <option value="dental">Dental</option>
+                                    <option value="vision">Vision</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="serviceDate">
+                                    <i class="fas fa-calendar"></i>
+                                    Date of Service
+                                </label>
+                                <input type="date" id="serviceDate" name="serviceDate" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="provider">
+                                    <i class="fas fa-hospital"></i>
+                                    Healthcare Provider
+                                </label>
+                                <input type="text" id="provider" name="provider" placeholder="Enter provider name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="amount">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    Amount Claimed ($)
+                                </label>
+                                <input type="number" id="amount" name="amount" step="0.01" min="0" placeholder="0.00" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">
+                                    <i class="fas fa-file-alt"></i>
+                                    Description
+                                </label>
+                                <textarea id="description" name="description" rows="4" placeholder="Describe the service or treatment"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-step" data-step="2">
+                            <div class="form-group">
+                                <label>
+                                    <i class="fas fa-paperclip"></i>
+                                    Supporting Documents
+                                </label>
+                                <div class="file-upload-section">
+                                    <div class="file-drop-zone">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <p>Drag and drop files here or click to browse</p>
+                                        <span class="file-hint">Upload receipts, prescriptions, or medical reports (PDF, Word, Images)</span>
+                                        <input type="file" class="file-input" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="display: none;">
+                                        <div class="file-list">
+                                            <!-- File previews will be added here -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-step" data-step="3">
+                            <div class="review-section">
+                                <h3><i class="fas fa-check-circle"></i> Review Your Claim</h3>
+                                <div class="review-details">
+                                    <div class="review-item">
+                                        <span class="label">Claim Type:</span>
+                                        <span class="value" id="reviewClaimType"></span>
+                                    </div>
+                                    <div class="review-item">
+                                        <span class="label">Service Date:</span>
+                                        <span class="value" id="reviewServiceDate"></span>
+                                    </div>
+                                    <div class="review-item">
+                                        <span class="label">Provider:</span>
+                                        <span class="value" id="reviewProvider"></span>
+                                    </div>
+                                    <div class="review-item">
+                                        <span class="label">Amount:</span>
+                                        <span class="value" id="reviewAmount"></span>
+                                    </div>
+                                    <div class="review-item">
+                                        <span class="label">Description:</span>
+                                        <span class="value" id="reviewDescription"></span>
+                                    </div>
+                                    <div class="review-item">
+                                        <span class="label">Documents:</span>
+                                        <span class="value" id="reviewDocuments"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-navigation">
+                            <button type="button" class="btn secondary prev-step" style="display: none;">
+                                <i class="fas fa-arrow-left"></i> Previous
+                            </button>
+                            <button type="button" class="btn primary next-step">
+                                Next <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <button type="submit" class="btn primary submit-claim" style="display: none;">
+                                <i class="fas fa-paper-plane"></i> Submit Claim
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Track Claims -->
+            <div class="tab-content" id="track">
+                <div class="claims-tracking">
+                    <div class="search-claims">
+                        <div class="search-input">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search by claim number...">
+                        </div>
+                        <div class="filter-options">
+                            <select id="statusFilter">
+                                <option value="">All Status</option>
+                                <option value="pending">Pending</option>
+                                <option value="approved">Approved</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+                            <select id="dateFilter">
+                                <option value="">All Time</option>
+                                <option value="7">Last 7 Days</option>
+                                <option value="30">Last 30 Days</option>
+                                <option value="90">Last 90 Days</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="claims-list">
+                        <!-- Claims will be populated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Claims History -->
+            <div class="tab-content" id="history">
+                <div class="claims-history">
+                    <div class="history-filters">
+                        <div class="filter-group">
+                            <label>Time Period:</label>
+                            <select id="historyPeriod">
+                                <option value="3">Last 3 Months</option>
+                                <option value="6">Last 6 Months</option>
+                                <option value="12">Last 12 Months</option>
+                                <option value="all">All Time</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Claim Type:</label>
+                            <select id="historyType">
+                                <option value="all">All Types</option>
+                                <option value="medical">Medical</option>
+                                <option value="prescription">Prescription</option>
+                                <option value="dental">Dental</option>
+                                <option value="vision">Vision</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="history-stats">
+                        <div class="stat-card">
+                            <i class="fas fa-file-medical"></i>
+                            <div class="stat-info">
+                                <h3>Total Claims</h3>
+                                <span class="count">0</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-check-circle"></i>
+                            <div class="stat-info">
+                                <h3>Approved</h3>
+                                <span class="count">0</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-dollar-sign"></i>
+                            <div class="stat-info">
+                                <h3>Total Amount</h3>
+                                <span class="count">$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="history-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Claim ID</th>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="historyTableBody">
+                                <!-- History will be populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>
+                    <i class="fas fa-phone"></i> +256-7718-30-421-HEALTHCARE-PLUS<br>
+                    <i class="fas fa-envelope"></i> info@healthcareplus.com<br>
+                    <i class="fas fa-location-dot"></i> 123 Healthcare Ave, Makerere Hill
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 HealthCare Plus. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/dark-mode.js"></script>
+    <script src="js/hamburger.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/fileUpload.js"></script>
+    <script src="js/claims.js"></script>
+</body>
+</html> 
