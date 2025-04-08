@@ -1,0 +1,67 @@
+/* Dark Mode Styles */
+body.dark-mode {
+    --background-color: #1a1a1a;
+    --text-color: #ffffff;
+}
+
+body.dark-mode .navbar {
+    background-color: #242424;
+}
+
+body.dark-mode .service-card {
+    background-color: #242424;
+}
+
+body.dark-mode .hero {
+    background: linear-gradient(rgba(44, 123, 229, 0.05), rgba(44, 123, 229, 0.1));
+}
+
+/* Add color theme variables */
+:root {
+    --theme-blue: #2c7be5;
+    --theme-green: #28a745;
+    --theme-purple: #6f42c1;
+    --theme-orange: #fd7e14;
+}
+
+/* Theme switcher styles */
+.theme-switcher {
+    position: fixed;
+    right: 20px;
+    bottom: 80px;
+    background: var(--background-color);
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.color-option {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin: 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.color-option.active {
+    border-color: white;
+}
+
+/* Theme variations */
+body[data-theme="blue"] {
+    --primary-color: var(--theme-blue);
+}
+
+body[data-theme="green"] {
+    --primary-color: var(--theme-green);
+}
+
+body[data-theme="purple"] {
+    --primary-color: var(--theme-purple);
+}
+
+body[data-theme="orange"] {
+    --primary-color: var(--theme-orange);
+} 

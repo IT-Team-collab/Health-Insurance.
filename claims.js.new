@@ -1,0 +1,800 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const claimsManager = {
+        init: function() {
+            this.setupTabsNavigation();
+            this.setupFileUpload();
+            this.setupClaimForm();
+            this.setupClaimTracking();
+            this.loadUserClaims();
+        },
+
+        setupTabsNavigation: function() {
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs and contents
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding content
+                    tab.classList.add('active');
+                    const targetContent = document.getElementById(tab.getAttribute('data-tab'));
+                    if (targetContent) {
+                        targetContent.classList.add('active');
+                    }
+                });
+            });
+        },
+
+        setupFileUpload: function() {
+            const fileDropZone = document.querySelector('.file-drop-zone');
+            const fileInput = document.querySelector('.file-input');
+            const selectedFiles = document.querySelector('.selected-files');
+            
+            if (!fileDropZone || !fileInput) return;
+            
+            // Click to browse files
+            fileDropZone.addEventListener('click', () => {
+                fileInput.click();
+            });
+            
+            // Handle file selection
+            fileInput.addEventListener('change', (e) => {
+                this.handleFiles(e.target.files);
+            });
+            
+            // Handle drag and drop
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                fileDropZone.addEventListener(eventName, preventDefaults, false);
+            });
+            
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            
+            ['dragenter', 'dragover'].forEach(eventName => {
+                fileDropZone.addEventListener(eventName, () => {
+                    fileDropZone.classList.add('highlight');
+                }, false);
+            });
+            
+            ['dragleave', 'drop'].forEach(eventName => {
+                fileDropZone.addEventListener(eventName, () => {
+                    fileDropZone.classList.remove('highlight');
+                }, false);
+            });
+            
+            fileDropZone.addEventListener('drop', (e) => {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+                this.handleFiles(files);
+            }.bind(this), false);
+        },
+        
+        handleFiles: function(files) {
+            if (!files || files.length === 0) return;
+            
+            const selectedFiles = document.querySelector('.selected-files');
+            const allowedTypes = ['application/pdf', 'image/jpeg', 'image/png', 'image/jpg', 
+                                 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+            
+            Array.from(files).forEach(file => {
+                // Check if file type is allowed
+                if (!allowedTypes.includes(file.type)) {
+                    this.showNotification('Invalid file type. Please upload PDF, Word, or image files.', 'error');
+                    return;
+                }
+                
+                // Check if file is already added
+                const existingFiles = selectedFiles.querySelectorAll('.file-name');
+                for (let i = 0; i < existingFiles.length; i++) {
+                    if (existingFiles[i].textContent === file.name) {
+                        this.showNotification('File already added.', 'warning');
+                        return;
+                    }
+                }
+                
+                // Create file item
+                const fileItem = document.createElement('div');
+                fileItem.className = 'file-item';
+                
+                // Determine file icon class based on type
+                let iconClass = 'img';
+                if (file.type.includes('pdf')) {
+                    iconClass = 'pdf';
+                } else if (file.type.includes('word') || file.type.includes('doc')) {
+                    iconClass = 'doc';
+                }
+                
+                // Format file size
+                const fileSize = this.formatFileSize(file.size);
+                
+                fileItem.innerHTML = 
+                    `<div class="file-icon ${iconClass}">
+                        <i class="fas ${iconClass === 'pdf' ? 'fa-file-pdf' : 
+                                     iconClass === 'doc' ? 'fa-file-word' : 'fa-file-image'}"></i>
+                    </div>
+                    <div class="file-info">
+                        <div class="file-name">${file.name}</div>
+                        <div class="file-size">${fileSize}</div>
+                    </div>
+                    <div class="file-actions">
+                        <button type="button" class="remove-file" aria-label="Remove file">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>`;
+                
+                // Add remove file functionality
+                const removeButton = fileItem.querySelector('.remove-file');
+                removeButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    fileItem.remove();
+                    
+                    // If no files left, hide the selected files section
+                    if (selectedFiles.children.length === 0) {
+                        selectedFiles.classList.add('hide');
+                    }
+                });
+                
+                selectedFiles.appendChild(fileItem);
+                selectedFiles.classList.remove('hide');
+            });
+        },
+        
+        formatFileSize: function(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        },
+        
+        setupClaimForm: function() {
+            const claimForm = document.getElementById('new-claim-form');
+            
+            if (!claimForm) return;
+            
+            // Save draft button
+            const saveDraftBtn = document.getElementById('save-draft');
+            if (saveDraftBtn) {
+                saveDraftBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.saveClaimDraft();
+                });
+            }
+            
+            // Submit claim form
+            claimForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                this.submitClaimForm();
+            });
+        },
+        
+        saveClaimDraft: function() {
+            const claimForm = document.getElementById('new-claim-form');
+            if (!claimForm) return;
+            
+            // Gather form data
+            const formData = new FormData(claimForm);
+            const draftData = {};
+            
+            for (const [key, value] of formData.entries()) {
+                draftData[key] = value;
+            }
+            
+            // Get existing drafts or initialize empty array
+            let drafts = JSON.parse(localStorage.getItem('claimDrafts') || '[]');
+            
+            // Add timestamp
+            draftData.draftedAt = new Date().toISOString();
+            draftData.draftId = 'draft_' + Date.now();
+            
+            // Add to drafts array
+            drafts.push(draftData);
+            
+            // Save back to localStorage
+            localStorage.setItem('claimDrafts', JSON.stringify(drafts));
+            
+            this.showNotification('Claim draft saved successfully.', 'success');
+        },
+        
+        submitClaimForm: function() {
+            const claimForm = document.getElementById('new-claim-form');
+            if (!claimForm) return;
+            
+            // Check form validity
+            if (!claimForm.checkValidity()) {
+                claimForm.reportValidity();
+                return;
+            }
+            
+            // Gather form data
+            const formData = new FormData(claimForm);
+            const claimData = {};
+            
+            for (const [key, value] of formData.entries()) {
+                claimData[key] = value;
+            }
+            
+            // Get selected plan from localStorage
+            const selectedPlan = localStorage.getItem('selectedPlan') || 'basic';
+            
+            // Process claim data
+            const claim = {
+                id: 'CLM' + Date.now().toString().slice(-6),
+                date: new Date().toISOString(),
+                serviceDate: claimData['service-date'],
+                type: claimData['claim-type'],
+                planType: this.capitalizeFirstLetter(selectedPlan),
+                amount: parseFloat(claimData['claim-amount'] || 0).toFixed(2),
+                provider: claimData['provider'],
+                description: claimData['description'],
+                status: 'pending',
+                submittedAt: new Date().toISOString(),
+                documents: []
+            };
+            
+            // Get file information
+            const fileItems = document.querySelectorAll('.file-item');
+            fileItems.forEach((item, index) => {
+                const fileName = item.querySelector('.file-name').textContent;
+                const fileSize = item.querySelector('.file-size').textContent;
+                const fileType = item.querySelector('.file-icon').classList.contains('pdf') ? 'pdf' : 
+                                item.querySelector('.file-icon').classList.contains('doc') ? 'doc' : 'image';
+                
+                claim.documents.push({
+                    name: fileName,
+                    size: fileSize,
+                    type: fileType,
+                    uploadedAt: new Date().toISOString()
+                });
+            });
+            
+            // Get existing claims or initialize empty array
+            let claims = JSON.parse(localStorage.getItem('userClaims') || '[]');
+            
+            // Add new claim to array
+            claims.push(claim);
+            
+            // Save back to localStorage
+            localStorage.setItem('userClaims', JSON.stringify(claims));
+            
+            // Reset form and show success message
+            claimForm.reset();
+            document.querySelector('.selected-files').innerHTML = '';
+            document.querySelector('.selected-files').classList.add('hide');
+            
+            this.showNotification('Your claim has been submitted successfully. You can track its status in the Claims Tracking section.', 'success');
+            
+            // Switch to tracking tab
+            const trackTab = document.querySelector('.tab[data-content="track-content"]');
+            if (trackTab) {
+                trackTab.click();
+                this.loadUserClaims();
+            }
+        },
+        
+        capitalizeFirstLetter: function(string) {
+            if (!string) return '';
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        },
+        
+        setupClaimTracking: function() {
+            // Search claims functionality
+            const searchButton = document.getElementById('search-claims-btn');
+            const claimSearch = document.getElementById('claim-search');
+            
+            if (searchButton && claimSearch) {
+                searchButton.addEventListener('click', () => {
+                    const query = claimSearch.value.trim().toLowerCase();
+                    this.filterClaims(query);
+                });
+                
+                claimSearch.addEventListener('keyup', (e) => {
+                    if (e.key === 'Enter') {
+                        const query = claimSearch.value.trim().toLowerCase();
+                        this.filterClaims(query);
+                    }
+                });
+            }
+            
+            // Switch to new claim submission
+            const newClaimBtn = document.getElementById('new-claim-btn');
+            if (newClaimBtn) {
+                newClaimBtn.addEventListener('click', () => {
+                    const submitTab = document.querySelector('.tab[data-content="submit-content"]');
+                    if (submitTab) {
+                        submitTab.click();
+                    }
+                });
+            }
+            
+            // Set up modal handling
+            this.setupClaimModals();
+        },
+        
+        setupClaimModals: function() {
+            // Claim details modal
+            const claimDetailsModal = document.getElementById('claim-details-modal');
+            const closeButtons = document.querySelectorAll('.close-modal');
+            
+            closeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = button.closest('.modal');
+                    if (modal) {
+                        modal.classList.remove('show');
+                    }
+                });
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target.classList.contains('modal') && e.target.classList.contains('show')) {
+                    e.target.classList.remove('show');
+                }
+            });
+            
+            // Download claim summary
+            const downloadClaimBtn = document.getElementById('download-claim-btn');
+            if (downloadClaimBtn) {
+                downloadClaimBtn.addEventListener('click', () => {
+                    const claimId = document.getElementById('modal-claim-id').textContent;
+                    this.downloadClaimSummary(claimId);
+                });
+            }
+        },
+        
+        loadUserClaims: function() {
+            const claimsList = document.getElementById('claims-list');
+            const noClaimsMessage = document.getElementById('no-claims-message');
+            
+            if (!claimsList) return;
+            
+            // Clear previous content
+            claimsList.innerHTML = '';
+            
+            // Get claims from localStorage
+            const claims = JSON.parse(localStorage.getItem('userClaims') || '[]');
+            
+            if (claims.length === 0) {
+                // Show no claims message
+                if (noClaimsMessage) {
+                    noClaimsMessage.style.display = 'flex';
+                }
+                return;
+            }
+            
+            // Hide no claims message
+            if (noClaimsMessage) {
+                noClaimsMessage.style.display = 'none';
+            }
+            
+            // Create table for claims
+            const table = document.createElement('table');
+            table.className = 'claims-table';
+            
+            // Create table header
+            const thead = document.createElement('thead');
+            thead.innerHTML = `
+                <tr>
+                    <th>Claim ID</th>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Plan Type</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>`;
+            table.appendChild(thead);
+            
+            // Create table body
+            const tbody = document.createElement('tbody');
+            
+            // Sort claims by date (newest first)
+            claims.sort((a, b) => new Date(b.submittedAt) - new Date(a.submittedAt));
+            
+            claims.forEach(claim => {
+                const tr = document.createElement('tr');
+                
+                // Format date
+                const claimDate = this.formatDate(claim.submittedAt);
+                
+                // Format amount
+                const formattedAmount = this.formatAmount(claim.amount);
+                
+                // Create status badge
+                const statusBadge = this.getStatusBadge(claim.status);
+                
+                tr.innerHTML = `
+                    <td>${claim.id}</td>
+                    <td>${claimDate}</td>
+                    <td>${claim.type || 'Medical'}</td>
+                    <td>${claim.planType || 'Basic Plan'}</td>
+                    <td>${formattedAmount}</td>
+                    <td>${statusBadge}</td>
+                    <td>
+                        <button class="view-claim-btn" data-claim-id="${claim.id}">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </td>`;
+                
+                tbody.appendChild(tr);
+            });
+            
+            table.appendChild(tbody);
+            claimsList.appendChild(table);
+            
+            // Add event listeners to view buttons
+            const viewButtons = document.querySelectorAll('.view-claim-btn');
+            viewButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const claimId = button.getAttribute('data-claim-id');
+                    this.viewClaimDetails(claimId);
+                });
+            });
+        },
+        
+        formatDate: function(dateString) {
+            try {
+                const date = new Date(dateString);
+                if (isNaN(date.getTime())) {
+                    return new Date().toLocaleDateString();
+                }
+                return date.toLocaleDateString();
+            } catch (e) {
+                return new Date().toLocaleDateString();
+            }
+        },
+        
+        formatAmount: function(amount) {
+            try {
+                const value = parseFloat(amount);
+                if (isNaN(value)) {
+                    return '$0.00';
+                }
+                return '$' + value.toFixed(2);
+            } catch (e) {
+                return '$0.00';
+            }
+        },
+        
+        getStatusBadge: function(status) {
+            if (!status) status = 'pending';
+            
+            const statusColors = {
+                'pending': 'orange',
+                'approved': 'green',
+                'rejected': 'red',
+                'in-review': 'blue',
+                'incomplete': 'gray'
+            };
+            
+            const color = statusColors[status.toLowerCase()] || 'gray';
+            const label = this.capitalizeFirstLetter(status);
+            
+            return `<span class="status-badge ${color}">${label}</span>`;
+        },
+        
+        filterClaims: function(query) {
+            const claimsList = document.getElementById('claims-list');
+            const noClaimsMessage = document.getElementById('no-claims-message');
+            const noResultsMessage = document.getElementById('no-results-message');
+            
+            if (!claimsList) return;
+            
+            // Get claims from localStorage
+            const claims = JSON.parse(localStorage.getItem('userClaims') || '[]');
+            
+            if (claims.length === 0) {
+                if (noClaimsMessage) {
+                    noClaimsMessage.style.display = 'flex';
+                }
+                if (noResultsMessage) {
+                    noResultsMessage.style.display = 'none';
+                }
+                return;
+            }
+            
+            // Filter claims based on search query
+            const filteredClaims = claims.filter(claim => {
+                return (
+                    (claim.id && claim.id.toLowerCase().includes(query)) ||
+                    (claim.type && claim.type.toLowerCase().includes(query)) ||
+                    (claim.provider && claim.provider.toLowerCase().includes(query)) ||
+                    (claim.description && claim.description.toLowerCase().includes(query)) ||
+                    (claim.status && claim.status.toLowerCase().includes(query))
+                );
+            });
+            
+            // Clear previous content
+            claimsList.innerHTML = '';
+            
+            if (filteredClaims.length === 0) {
+                // Show no results message
+                if (noResultsMessage) {
+                    noResultsMessage.style.display = 'flex';
+                }
+                if (noClaimsMessage) {
+                    noClaimsMessage.style.display = 'none';
+                }
+                return;
+            }
+            
+            // Hide no claims and no results messages
+            if (noClaimsMessage) {
+                noClaimsMessage.style.display = 'none';
+            }
+            if (noResultsMessage) {
+                noResultsMessage.style.display = 'none';
+            }
+            
+            // Create table for claims
+            const table = document.createElement('table');
+            table.className = 'claims-table';
+            
+            // Create table header
+            const thead = document.createElement('thead');
+            thead.innerHTML = `
+                <tr>
+                    <th>Claim ID</th>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Plan Type</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>`;
+            table.appendChild(thead);
+            
+            // Create table body
+            const tbody = document.createElement('tbody');
+            
+            // Sort claims by date (newest first)
+            filteredClaims.sort((a, b) => new Date(b.submittedAt) - new Date(a.submittedAt));
+            
+            filteredClaims.forEach(claim => {
+                const tr = document.createElement('tr');
+                
+                // Format date
+                const claimDate = this.formatDate(claim.submittedAt);
+                
+                // Format amount
+                const formattedAmount = this.formatAmount(claim.amount);
+                
+                // Create status badge
+                const statusBadge = this.getStatusBadge(claim.status);
+                
+                tr.innerHTML = `
+                    <td>${claim.id}</td>
+                    <td>${claimDate}</td>
+                    <td>${claim.type || 'Medical'}</td>
+                    <td>${claim.planType || 'Basic Plan'}</td>
+                    <td>${formattedAmount}</td>
+                    <td>${statusBadge}</td>
+                    <td>
+                        <button class="view-claim-btn" data-claim-id="${claim.id}">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </td>`;
+                
+                tbody.appendChild(tr);
+            });
+            
+            table.appendChild(tbody);
+            claimsList.appendChild(table);
+            
+            // Add event listeners to view buttons
+            const viewButtons = document.querySelectorAll('.view-claim-btn');
+            viewButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const claimId = button.getAttribute('data-claim-id');
+                    this.viewClaimDetails(claimId);
+                });
+            });
+        },
+        
+        viewClaimDetails: function(claimId) {
+            if (!claimId) return;
+            
+            // Get claims from localStorage
+            const claims = JSON.parse(localStorage.getItem('userClaims') || '[]');
+            
+            // Find the claim with matching ID
+            const claim = claims.find(c => c.id === claimId);
+            
+            if (!claim) {
+                this.showNotification('Claim not found.', 'error');
+                return;
+            }
+            
+            // Get modal elements
+            const modal = document.getElementById('claim-details-modal');
+            const modalContent = document.querySelector('#claim-details-modal .modal-body');
+            
+            if (!modal || !modalContent) return;
+            
+            // Format dates and amount
+            const submittedDate = this.formatDate(claim.submittedAt);
+            const serviceDate = this.formatDate(claim.serviceDate);
+            const formattedAmount = this.formatAmount(claim.amount);
+            
+            // Generate document list HTML
+            let documentsHtml = '';
+            
+            if (claim.documents && claim.documents.length > 0) {
+                documentsHtml = '<div class="documents-list">';
+                
+                claim.documents.forEach(doc => {
+                    // Determine document icon
+                    let iconClass = 'fa-file-image';
+                    if (doc.type === 'pdf') {
+                        iconClass = 'fa-file-pdf';
+                    } else if (doc.type === 'doc') {
+                        iconClass = 'fa-file-word';
+                    }
+                    
+                    documentsHtml += `
+                        <div class="document-item">
+                            <div class="document-icon">
+                                <i class="fas ${iconClass}"></i>
+                            </div>
+                            <div class="document-info">
+                                <div class="document-name">${doc.name}</div>
+                                <div class="document-size">${doc.size}</div>
+                            </div>
+                        </div>`;
+                });
+                
+                documentsHtml += '</div>';
+            } else {
+                documentsHtml = '<p class="no-documents">No documents attached</p>';
+            }
+            
+            // Set modal content
+            modalContent.innerHTML = `
+                <div class="claim-details">
+                    <div class="detail-group">
+                        <span class="detail-label">Claim ID:</span>
+                        <span class="detail-value" id="modal-claim-id">${claim.id}</span>
+                    </div>
+                    <div class="detail-group">
+                        <span class="detail-label">Submitted Date:</span>
+                        <span class="detail-value">${submittedDate}</span>
+                    </div>
+                    <div class="detail-group">
+                        <span class="detail-label">Service Date:</span>
+                        <span class="detail-value">${serviceDate}</span>
+                    </div>
+                    <div class="detail-group">
+                        <span class="detail-label">Type:</span>
+                        <span class="detail-value">${claim.type || 'Medical'}</span>
+                    </div>
+                    <div class="detail-group">
+                        <span class="detail-label">Plan Type:</span>
+                        <span class="detail-value">${claim.planType || 'Basic Plan'}</span>
+                    </div>
+                    <div class="detail-group">
+                        <span class="detail-label">Provider:</span>
+                        <span class="detail-value">${claim.provider || 'N/A'}</span>
+                    </div>
+                    <div class="detail-group">
+                        <span class="detail-label">Amount:</span>
+                        <span class="detail-value">${formattedAmount}</span>
+                    </div>
+                    <div class="detail-group">
+                        <span class="detail-label">Status:</span>
+                        <span class="detail-value">${this.getStatusBadge(claim.status)}</span>
+                    </div>
+                    <div class="detail-group">
+                        <span class="detail-label">Description:</span>
+                        <span class="detail-value description">${claim.description || 'No description provided'}</span>
+                    </div>
+                    <div class="detail-group documents">
+                        <span class="detail-label">Documents:</span>
+                        <div class="detail-value">
+                            ${documentsHtml}
+                        </div>
+                    </div>
+                </div>`;
+            
+            // Show modal
+            modal.classList.add('show');
+        },
+        
+        downloadClaimSummary: function(claimId) {
+            if (!claimId) return;
+            
+            // Get claims from localStorage
+            const claims = JSON.parse(localStorage.getItem('userClaims') || '[]');
+            
+            // Find the claim with matching ID
+            const claim = claims.find(c => c.id === claimId);
+            
+            if (!claim) {
+                this.showNotification('Claim not found.', 'error');
+                return;
+            }
+            
+            // Format dates and amount
+            const submittedDate = this.formatDate(claim.submittedAt);
+            const serviceDate = this.formatDate(claim.serviceDate);
+            const formattedAmount = this.formatAmount(claim.amount);
+            
+            // Create summary text
+            const summary = `HEALTHSURE INSURANCE CLAIM SUMMARY
+----------------------------------
+Claim ID: ${claim.id}
+Submitted Date: ${submittedDate}
+Service Date: ${serviceDate}
+Type: ${claim.type || 'Medical'}
+Plan Type: ${claim.planType || 'Basic Plan'}
+Provider: ${claim.provider || 'N/A'}
+Amount: ${formattedAmount}
+Status: ${claim.status || 'Pending'}
+Description: ${claim.description || 'No description provided'}
+
+Documents:
+${claim.documents && claim.documents.length > 0 ? 
+    claim.documents.map(doc => `- ${doc.name} (${doc.size})`).join('\n') : 
+    'No documents attached'}
+
+Thank you for using HealthSure Insurance services.
+For any questions, please contact support@healthsure.com.`;
+            
+            // Create a Blob with the text
+            const blob = new Blob([summary], { type: 'text/plain' });
+            
+            // Create a link element
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = `claim-summary-${claim.id}.txt`;
+            
+            // Append to the document, click it, and remove it
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            
+            this.showNotification('Claim summary downloaded successfully.', 'success');
+        },
+        
+        showNotification: function(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            
+            notification.innerHTML = 
+                '<div class="notification-content">' +
+                '<i class="fas ' + (type === 'success' ? 'fa-check-circle' : 
+                             type === 'error' ? 'fa-exclamation-circle' : 
+                             type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle') + '"></i>' +
+                '<span>' + message + '</span>' +
+                '</div>' +
+                '<button class="close-notification">' +
+                '<i class="fas fa-times"></i>' +
+                '</button>';
+            
+            // Add to the document
+            document.body.appendChild(notification);
+            
+            // Add event listener to close button
+            const closeButton = notification.querySelector('.close-notification');
+            closeButton.addEventListener('click', () => {
+                document.body.removeChild(notification);
+            });
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (document.body.contains(notification)) {
+                    document.body.removeChild(notification);
+                }
+            }, 5000);
+        }
+    };
+    
+    // Initialize claims manager
+    claimsManager.init();
+}); 
